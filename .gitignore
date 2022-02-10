@@ -1,0 +1,6 @@
+.DS_Store
+fixtures/.DS_Store
+joined.mrc
+related_filtered.mrc
+related_filtered.mrk
+fixtures/*.mrk
