@@ -15,7 +15,7 @@ with open('joined.mrc', 'wb') as joined:
 # work magic on whatever is in the resulting joined file; here I would
 # like for all records with 'REL' tag to write to related_filtered.mrc.
 # right now only one record is being written to the file, but it should be 
-# more than that (see commented out print function to see how many should be there. 
+# more than that (see commented out print function to see how many should be there). 
 
 with open('joined.mrc', 'rb') as joined:
     reader = MARCReader(joined, to_unicode=True, force_utf8=True)
