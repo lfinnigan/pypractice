@@ -21,8 +21,8 @@ with open('joined.mrc', 'rb') as joined:
     reader = MARCReader(joined, to_unicode=True, force_utf8=True)
     for record in reader:
         if (record['REL']):
-               # with open('related_filtered.mrc', 'wb') as out:
-               #   out.write(record.as_marc())
-               print(record['001'].value())
+               with open('related_filtered.mrc', 'wb') as out:
+                 out.write(record.as_marc())
+               # print(record['001'].value())
         else:
             pass
