@@ -14,6 +14,7 @@ with open('joined.mrc', 'wb') as joined:
 
 # work magic on whatever is in the resulting joined file; here, records with MARC tag
 # 'REL' (related record info from Alma), write to a mrc file
+# switch to print(record) below to test how many records there should be
 
 with open('joined.mrc', 'rb') as joined:
     reader = MARCReader(joined, to_unicode=True, force_utf8=True)
