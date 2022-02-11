@@ -16,12 +16,21 @@ with open('joined.mrc', 'wb') as joined:
 # 'REL' (related record info from Alma), write to a mrc file
 # switch to print(record) below to test how many records there should be
 
+count = 0
+
 with open('joined.mrc', 'rb') as joined:
     reader = MARCReader(joined, to_unicode=True, force_utf8=True)
-    for record in reader:
-        if (record['REL']):
-               with open('related_filtered.mrc', 'ab') as out:
-                 out.write(record.as_marc())
+    try:
+        for record in reader:
+            if (record['REL']):
+                with open('related_filtered.mrc', 'ab') as out:
+                    try:
+                        out.write(record.as_marc())
+                        count += 1
+                    except UnicodeDecodeError as e:
+                        print(e)
                # print(record['001'].value())
-        else:
-            pass
+    except:
+        pass
+
+print(f'{count} records with "REL" written to related_filtered.mrc')
