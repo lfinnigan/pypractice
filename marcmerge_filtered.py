@@ -12,16 +12,14 @@ with open('joined.mrc', 'wb') as joined:
         with open(i, 'rb') as readfile:
             shutil.copyfileobj(readfile, joined)
 
-# work magic on whatever is in the resulting joined file; here I would
-# like for all records with 'REL' tag to write to related_filtered.mrc.
-# right now only one record is being written to the file, but it should be 
-# more than that (see commented out print function to see how many should be there). 
+# work magic on whatever is in the resulting joined file; here, records with MARC tag
+# 'REL' (related record info from Alma), write to a mrc file
 
 with open('joined.mrc', 'rb') as joined:
     reader = MARCReader(joined, to_unicode=True, force_utf8=True)
     for record in reader:
         if (record['REL']):
-               with open('related_filtered.mrc', 'wb') as out:
+               with open('related_filtered.mrc', 'ab') as out:
                  out.write(record.as_marc())
                # print(record['001'].value())
         else:
